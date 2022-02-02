@@ -1,11 +1,11 @@
-import 'package:dag_book/widgets/menu.dart';
-import 'package:dag_book/widgets/my_book.dart';
-import 'package:dag_book/widgets/page_what_they_read.dart';
-import 'package:dag_book/widgets/start_page.dart';
+import 'package:dag_book/page/page_library_menu.dart';
+import 'package:dag_book/page/page_my_book.dart';
+import 'package:dag_book/page/page_what_they_read.dart';
+import 'package:dag_book/page/start/start_page.dart';
 import 'package:flutter/material.dart';
 
 import '../Theme/app_colors.dart';
-import 'bottom_navigation_menu.dart';
+import '../widgets/bottom_navigation_menu.dart';
 import 'page_search.dart';
 
 class App extends StatelessWidget {
@@ -29,12 +29,12 @@ class App extends StatelessWidget {
 
       initialRoute: '/',
       routes: {
-        '/': (context) =>StartPage(),
+        '/': (context) => StartPage(),
         '/menu': (context) => BottomMenuNavigation(),
         '/home': (context) => Menu(),
         '/mybook': (context) => MyBook(),
         '/whatread': (context) => WhatRead(),
-        '/pagesearch': (context) => SliverAppBarMenu(),
+        '/pagesearch': (context) => PageSearch(),
       },
     );
   }

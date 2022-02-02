@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Theme/start_page_color.dart';
+import 'start_page_abstract.dart';
 
 
 class StartPage extends StatelessWidget {
@@ -16,13 +16,13 @@ class StartPage extends StatelessWidget {
             title: StartPageTitel.text,
           centerTitle: true,
         ),
-                body: const CutBody()
+                body: const StartBody()
     );
   }
 }
 
-class CutBody extends StatelessWidget {
-  const CutBody({Key? key}) : super(key: key);
+class StartBody extends StatelessWidget {
+  const StartBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +36,7 @@ class CutBody extends StatelessWidget {
                 SizedBox(
                   width: 200,
                   height: 200,
-                  child: Text('Я Ваш помощник в поиске знаний о родном крае.\n'
-                      'Здесь Вы можете ознакомиться с книгами о Кавказе.',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 231, 215, 201),
-                        fontFamily: 'Lobster'
-                    ),),
+                  child: StartPageBody.text,
                 ),
               ],
             ),
@@ -51,26 +45,29 @@ class CutBody extends StatelessWidget {
               children: [
                 TextButton(
                     onPressed: (){
-                      Navigator.pushNamed(context, '/menu');
+                      Navigator.pushNamedAndRemoveUntil(context, '/menu', (route) => false);
                     },
-                    child: const Text('Перейти далее',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Color.fromARGB(255, 231, 215, 201),
-                          fontFamily: 'Lobster'
-                      ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                         Text('Перейти далее',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 231, 215, 201),
+                              fontFamily: 'Lobster'
+                          ),
+                        ),
+                        Icon(Icons.keyboard_arrow_right,
+                        color: Colors.black45,),
+                      ],
                     )),
-                IconButton(onPressed: (){
-                  Navigator.pushNamed(context, '/menu');
-                },
-                  icon: const Icon(Icons.arrow_forward_ios_outlined, color: Color.fromARGB(255, 23, 14, 20),),)
               ],
             ),
           ],
         ),
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/photo/start.jpg'),
+              image: AssetImage('assets/photo/start1.jpg'),
           fit: BoxFit.cover),
         ),
         // width: double.infinity
